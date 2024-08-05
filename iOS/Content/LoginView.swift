@@ -1,6 +1,9 @@
 import SwiftUI
 
 struct LoginView: View {
+    @State var email: String = ""
+    @State var password: String = ""
+
     var body: some View {
         VStack(spacing: 0) {
             Image(.cloud)
@@ -9,11 +12,8 @@ struct LoginView: View {
 
             VStack(spacing: 24) {
                 VStack(spacing: 12) {
-                    TextField("Email", text: .constant(""))
-                        .textFieldStyle
-
-                    SecureField("Password", text: .constant(""))
-                        .textFieldStyle
+                    EmailField(value: $email)
+                    PasswordField(value: $password)
                 }
                 .font(.jetBrainsMonoRegular(size: 16))
 
@@ -33,11 +33,11 @@ struct LoginView: View {
             VStack(spacing: 18) {
                 HStack(alignment: .center, spacing: 12) {
                     HorizontalLine()
-                        .foregroundStyle(Color(.systemGray6))
+                        .foregroundStyle(.neutralQuinary)
 
                     Text("Or Login with")
                         .font(.system(size: 18, weight: .regular))
-                        .foregroundStyle(Color(.systemGray2))
+                        .foregroundStyle(.neutralTertiary)
                         .layoutPriority(.infinity)
 
                     HorizontalLine()
@@ -65,12 +65,12 @@ struct LoginView: View {
             HStack {
                 Text("Don’t have an account?")
                     .font(.system(size: 18, weight: .regular))
-                    .foregroundStyle(Color(.systemGray2))
+                    .foregroundStyle(.neutralTertiary)
 
                 Button {
                 } label: {
                     Text("SIGN UP")
-                        .foregroundStyle(.accent)
+                        .foregroundStyle(.brandPrimary)
                 }
             }
             .padding(.vertical, 46)
@@ -94,10 +94,37 @@ struct LoginView: View {
             }
             .frame(minHeight: 60)
             .frame(maxWidth: .infinity)
-            .background(Color(.systemGray3))
+            .background(.blackTertiary)
             .cornerRadius(4)
         }
     }
+
+    struct EmailField: View {
+        @Binding var value: String
+
+        var body: some View {
+            TextField(
+                "",
+                text: $value,
+                prompt: Text("Email").foregroundColor(.neutralSecondary)
+            )
+            .textFieldStyle
+        }
+    }
+
+    struct PasswordField: View {
+        @Binding var value: String
+
+        var body: some View {
+            SecureField(
+                "",
+                text: $value,
+                prompt: Text("Password").foregroundColor(.neutralSecondary)
+            )
+            .textFieldStyle
+        }
+    }
+
 }
 
 private extension View {
@@ -105,8 +132,12 @@ private extension View {
         self
             .padding(.horizontal, 12)
             .padding(.vertical, 14)
-            .background(Color(.systemGray6))
+            .background(.blackQuaternary)
             .cornerRadius(8)
+            .overlay {
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(.blackSecondary)
+            }
     }
 }
 
