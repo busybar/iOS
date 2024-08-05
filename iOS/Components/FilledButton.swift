@@ -16,7 +16,7 @@ struct FilledButton: View {
             HStack {
                 Spacer()
                 Text(text)
-                    .font(.system(size: 16, weight: .medium))
+                    .font(.ppNeueMontrealRegular(size: 16))
                     .foregroundColor(.white)
                     .padding(.vertical, 14)
                 Spacer()

@@ -15,18 +15,17 @@ struct LoginView: View {
                     EmailField(value: $email)
                     PasswordField(value: $password)
                 }
-                .font(.jetBrainsMonoRegular(size: 16))
 
                 HStack {
                     Spacer()
                     Button {
                     } label: {
                         Text("Forgot Password?")
-                            .font(.system(size: 18, weight: .regular))
+                            .font(.ppNeueMontrealRegular(size: 18))
                     }
                 }
 
-                FilledButton("LOGIN") {
+                FilledButton("LOG IN") {
                 }
             }
 
@@ -36,12 +35,12 @@ struct LoginView: View {
                         .foregroundStyle(.neutralQuinary)
 
                     Text("Or Login with")
-                        .font(.system(size: 18, weight: .regular))
+                        .font(.ppNeueMontrealRegular(size: 18))
                         .foregroundStyle(.neutralTertiary)
                         .layoutPriority(.infinity)
 
                     HorizontalLine()
-                        .foregroundStyle(Color(.systemGray6))
+                        .foregroundStyle(.neutralQuinary)
                 }
                 .padding(.top, 57)
 
@@ -64,12 +63,13 @@ struct LoginView: View {
 
             HStack {
                 Text("Don’t have an account?")
-                    .font(.system(size: 18, weight: .regular))
+                    .font(.ppNeueMontrealRegular(size: 18))
                     .foregroundStyle(.neutralTertiary)
 
                 Button {
                 } label: {
                     Text("SIGN UP")
+                        .font(.ppNeueMontrealRegular(size: 16))
                         .foregroundStyle(.brandPrimary)
                 }
             }
@@ -130,6 +130,7 @@ struct LoginView: View {
 private extension View {
     var textFieldStyle: some View {
         self
+            .font(.jetBrainsMonoRegular(size: 16))
             .padding(.horizontal, 12)
             .padding(.vertical, 14)
             .background(.blackQuaternary)
