@@ -1,0 +1,25 @@
+### Xcode ###
+## User settings
+xcuserdata/
+
+### Xcode Patch ###
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+/*.gcno
+**/xcshareddata/WorkspaceSettings.xcsettings
+
+### Package management
+## Swift Package Manager
+.build/
+.swiftpm/
+Packages/**/Package.resolved
+
+### Project specific
+## SwiftLint
+swiftlint
+
+### Generally unwanted files
+.DS_Store
