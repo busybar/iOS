@@ -28,6 +28,7 @@
 		8B638DDE2C610E9500C3458C /* BusyStatusBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BusyStatusBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B638DE82C610E9500C3458C /* BusyStatusBarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BusyStatusBarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B638DFD2C61195E00C3458C /* BusyStatusBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BusyStatusBar.entitlements; sourceTree = "<group>"; };
+		8BD9D7402C61480C0056FFC7 /* BusyStatusBar-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "BusyStatusBar-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -64,6 +65,7 @@
 		8B638DC52C610E9400C3458C = {
 			isa = PBXGroup;
 			children = (
+				8BD9D7402C61480C0056FFC7 /* BusyStatusBar-Info.plist */,
 				8B638DFD2C61195E00C3458C /* BusyStatusBar.entitlements */,
 				8B638DD02C610E9400C3458C /* iOS */,
 				8B638DE12C610E9500C3458C /* Tests */,
@@ -390,6 +392,7 @@
 				DEVELOPMENT_TEAM = SXH69675TZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "BusyStatusBar-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Busy Status Bar";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -426,6 +429,7 @@
 				DEVELOPMENT_TEAM = SXH69675TZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "BusyStatusBar-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Busy Status Bar";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
