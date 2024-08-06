@@ -94,6 +94,7 @@ struct AppsView: View {
 
                 Image(image)
                     .resizable()
+                    .scaledToFit()
 
                 FilledButton("RUN APP") {
                 }
