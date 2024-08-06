@@ -76,6 +76,7 @@ struct LoginView: View {
             .padding(.vertical, 46)
         }
         .padding(.horizontal, 24)
+        .background(.invertWhite)
     }
 
     struct HorizontalLine: View {

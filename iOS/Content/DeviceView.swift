@@ -108,6 +108,7 @@ struct DeviceView: View {
             .padding(.top, 26)
             .padding(.horizontal, 14)
         }
+        .background(.invertWhite)
     }
 
     struct DeviceInfo: View {
