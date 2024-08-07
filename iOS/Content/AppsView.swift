@@ -3,62 +3,55 @@ import SwiftUI
 struct AppsView: View {
     var body: some View {
         ScrollView {
-            VStack(spacing: 30) {
-                Button {
-                } label: {
-                    HStack(spacing: 8) {
-                        Image("Plus")
-                            .renderingMode(.template)
+            VStack(spacing: 40) {
+                Row(
+                    id: .busy,
+                    icon: "BusyStatusIcon",
+                    name: "BUSY STATUS",
+                    image: "BusyStatusImage"
+                )
 
-                        Text("CREATE STATUS")
-                    }
-                    .foregroundColor(.brandPrimary)
-                }
+                Divider()
+                    .background(.neutralQuinary)
 
-                VStack(spacing: 40) {
-                    Row(
-                        icon: "BusyStatusIcon",
-                        name: "BUSY STATUS",
-                        image: "BusyStatusImage"
-                    )
+                Row(
+                    id: .pomodoro,
+                    icon: "PomodoroTimerIcon",
+                    name: "POMODORO TIMER",
+                    image: "PomodoroTimerImage"
+                )
 
-                    Divider()
-                        .background(.neutralQuinary)
+                Divider()
+                    .background(.neutralQuinary)
 
-                    Row(
-                        icon: "PomodoroTimerIcon",
-                        name: "POMODORO TIMER",
-                        image: "PomodoroTimerImage"
-                    )
+                Row(
+                    id: .wallpapersGifs,
+                    icon: "WallpapersGifsIcon",
+                    name: "WALLPAPERS & GIFS",
+                    image: "WallpapersGifsImage"
+                )
 
-                    Divider()
-                        .background(.neutralQuinary)
+                Divider()
+                    .background(.neutralQuinary)
 
-                    Row(
-                        icon: "WallpapersGifsIcon",
-                        name: "WALLPAPERS & GIFS",
-                        image: "WallpapersGifsImage"
-                    )
+                Row(
+                    id: .clockWeather,
+                    icon: "ClockWeatherIcon",
+                    name: "CLOCK & WEATHER",
+                    image: "ClockWeatherImage"
+                )
 
-                    Divider()
-                        .background(.neutralQuinary)
+                Divider()
+                    .background(.neutralQuinary)
 
-                    Row(
-                        icon: "ClockWeatherIcon",
-                        name: "CLOCK & WEATHER",
-                        image: "ClockWeatherImage"
-                    )
-
-                    Divider()
-                        .background(.neutralQuinary)
-
-                    Row(
-                        icon: "InstagramStatsIcon",
-                        name: "INSIGHT STATS",
-                        image: "InstagramStatsImage"
-                    )
-                }
+                Row(
+                    id: .instargram,
+                    icon: "InstagramStatsIcon",
+                    name: "INSIGHT STATS",
+                    image: "InstagramStatsImage"
+                )
             }
+            .padding(.top, 14)
             .padding(.horizontal, 14)
             .padding(.bottom, 40)
         }
@@ -66,9 +59,16 @@ struct AppsView: View {
     }
 
     struct Row: View {
+        let id: BusyApp
         let icon: String
         let name: String
         let image: String
+
+        @State var customizeApp = false
+
+        @Environment(\.dismiss) var dismiss
+
+        @AppStorage("selectedApp") private var selectedApp: BusyApp = .busy
 
         var body: some View {
             VStack(spacing: 20) {
@@ -83,13 +83,25 @@ struct AppsView: View {
 
                     Spacer()
 
-                    HStack(spacing: 2) {
-                        Text("CUSTOMIZE")
-                            .font(.ppNeueMontrealRegular(size: 12))
-                        Image("ChevronRegular")
-                            .renderingMode(.template)
+                    Button {
+                        customizeApp = true
+                    } label: {
+                        HStack(spacing: 2) {
+                            Text("CUSTOMIZE")
+                                .font(.ppNeueMontrealRegular(size: 12))
+                            Image("ChevronRegular")
+                                .renderingMode(.template)
+                        }
+                        .foregroundColor(.neutralTertiary)
                     }
-                    .foregroundColor(.neutralTertiary)
+                    .alert(isPresented: $customizeApp) {
+                        Alert(
+                            title: Text(
+                                "The App doesn't support customizations"
+                            )
+                        )
+                    }
+                    .opacity(0)
                 }
 
                 Image(image)
@@ -97,6 +109,8 @@ struct AppsView: View {
                     .scaledToFit()
 
                 FilledButton("RUN APP") {
+                    selectedApp = id
+                    dismiss()
                 }
             }
         }
@@ -104,5 +118,5 @@ struct AppsView: View {
 }
 
 #Preview {
-    MainView(initialTab: 2)
+    MainView(initialTab: .apps)
 }

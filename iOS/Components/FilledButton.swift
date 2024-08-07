@@ -4,6 +4,8 @@ struct FilledButton<Label: View>: View {
     let action: () -> Void
     @ViewBuilder let label: () -> Label
 
+    @Environment(\.isEnabled) var isEnabled
+
     init(
         action: @escaping @MainActor () -> Void,
         @ViewBuilder label: @escaping () -> Label
@@ -24,7 +26,7 @@ struct FilledButton<Label: View>: View {
                     .padding(.vertical, 14)
                 Spacer()
             }
-            .background(.accent)
+            .background(isEnabled ? .brandPrimary : .neutralQuaternary)
             .cornerRadius(8)
         }
     }

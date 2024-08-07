@@ -1,11 +1,17 @@
 import SwiftUI
 
 struct MainView: View {
-    @State private var selectedTab = 0
+    @AppStorage("selectedTab") private var selectedTab: Tab = .login
 
-    private let initialTab: Int
+    enum Tab: String, RawRepresentable, Hashable {
+        case login
+        case device
+        case apps
+    }
 
-    init(initialTab: Int = 0) {
+    private let initialTab: Tab?
+
+    init(initialTab: Tab? = nil) {
         self.initialTab = initialTab
     }
 
@@ -17,21 +23,21 @@ struct MainView: View {
                         Image(.loginTab)
                             .renderingMode(.template)
                     }
-                    .tag(0)
+                    .tag(Tab.login)
 
                 DeviceView()
                     .tabItem {
                         Image(.deviceTab)
                             .renderingMode(.template)
                     }
-                    .tag(1)
+                    .tag(Tab.device)
 
                 AppsView() 
                     .tabItem {
                         Image(.appsTab)
                             .renderingMode(.template)
                     }
-                    .tag(2)
+                    .tag(Tab.apps)
             }
             .padding(.top, 4)
             .toolbarBackground(.backgroundTertiary, for: .tabBar)
@@ -39,7 +45,9 @@ struct MainView: View {
         }
         .accentColor(.primary)
         .task {
-            selectedTab = initialTab
+            if let initialTab {
+                selectedTab = initialTab
+            }
         }
     }
 }

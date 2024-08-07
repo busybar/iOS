@@ -7,5 +7,9 @@
 		<string>JetBrainsMono-Regular.ttf</string>
 		<string>PPNeueMontreal-Regular.ttf</string>
 	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>bluetooth-central</string>
+	</array>
 </dict>
 </plist>
